@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const title = routeName.charAt(0).toUpperCase() + routeName.slice(1)
 
   return (
-    <div className="grid grid-cols-6">
+    <div className="grid grid-cols-6 bg-tertiary">
       <NextNProgress />
       <Head>
         <title>{title}</title>
