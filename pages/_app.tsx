@@ -1,24 +1,24 @@
-import React from 'react'
-import Head from 'next/head'
-import '../styles/globals.css'
-import { useRouter } from 'next/router'
-import type { AppProps } from 'next/app'
-import { Toaster } from 'react-hot-toast'
-import NextNProgress from 'nextjs-progressbar'
+import React from "react";
+import Head from "next/head";
+import "../styles/globals.css";
+import { useRouter } from "next/router";
+import type { AppProps } from "next/app";
+import { Toaster } from "react-hot-toast";
+import NextNProgress from "nextjs-progressbar";
 
-import { Navbar } from '../src/components/Common/Navbar'
-
+import { Navbar } from "../src/components/Common/Navbar";
+import { Footer } from "../src/components/Common/Footer";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter()
+  const router = useRouter();
   const routeName = router.pathname
-    .split('/')
+    .split("/")
     .pop()!
-    .split('-')
-    .join(' ')
-    .toString()
+    .split("-")
+    .join(" ")
+    .toString();
 
-  const title = routeName.charAt(0).toUpperCase() + routeName.slice(1)
+  const title = routeName.charAt(0).toUpperCase() + routeName.slice(1);
 
   return (
     <div className="grid grid-cols-6 bg-tertiary">
@@ -33,6 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <Navbar />
       <Component {...pageProps} />
+      <Footer />
     </div>
-  )
+  );
 }
