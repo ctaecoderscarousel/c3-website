@@ -5,7 +5,7 @@ import Image from 'next/image'
 const Team: NextPage = () => {
     return (
         <div className='col-span-6'>
-
+            <span>Team</span>
         </div>
     )
 }
