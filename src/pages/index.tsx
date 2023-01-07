@@ -1,27 +1,25 @@
-import { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import { useEffect } from 'react'
-import { Navbar } from '../src/components/Common/Navbar'
-import { Events } from '../src/components/Home/Events'
+import { NextPage } from "next";
+import { useEffect } from "react";
+import { Events } from "../components/Home/Events";
 
 const Home: NextPage = () => {
   useEffect(() => {
-    const script = document.createElement('script');
+    const script = document.createElement("script");
 
-    script.src = 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js';
+    script.src =
+      "https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js";
     script.async = true;
 
     document.body.appendChild(script);
 
     return () => {
       document.body.removeChild(script);
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <div className="col-span-6 flex flex-col">
-      <div className='px-10 py-8 flex flex-col md:flex-row gap-3 items-center'>
+      <div className="px-10 py-8 flex flex-col md:flex-row gap-3 items-center">
         <span className="col-span-3 grow flex items-center justify-center font-bold text-xl md:text-5xl bg-gradient-to-r from-primary-light via-primary to-secondary bg-clip-text text-transparent p-2">
           Programming Club of CTAE
         </span>
@@ -33,13 +31,12 @@ const Home: NextPage = () => {
           autoplay
           style={{ padding: "0.5rem" }}
           src="https://assets2.lottiefiles.com/packages/lf20_fg8zotvy.json"
-        >
-        </lottie-player>
+        ></lottie-player>
       </div>
-      <hr className='border-primary/70 m-10 border-10' />
+      <hr className="border-primary/70 m-10 border-10" />
       <Events />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

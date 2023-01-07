@@ -1,13 +1,12 @@
 import React from "react";
 import Head from "next/head";
-import "../styles/globals.css";
+import "../../styles/globals.css";
 import { useRouter } from "next/router";
 import type { AppProps } from "next/app";
 import { Toaster } from "react-hot-toast";
 import NextNProgress from "nextjs-progressbar";
-
-import { Navbar } from "../src/components/Common/Navbar";
-import { Footer } from "../src/components/Common/Footer";
+import { Navbar } from "../components/Common/Navbar";
+import { Footer } from "../components/Common/Footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
