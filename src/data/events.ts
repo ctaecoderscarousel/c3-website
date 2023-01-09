@@ -20,7 +20,7 @@ export const eventsData = [
         eventImgs: [
             "https://res.cloudinary.com/dli15zk4p/image/upload/v1668146818/c3-website/event%20pictures/compose%20camp/IMG_4591-02_lecc14.jpg",
             "https://res.cloudinary.com/dli15zk4p/image/upload/v1668146810/c3-website/event%20pictures/compose%20camp/day_3_myar7q.png",
-            "https://res.cloudinary.com/dli15zk4p/image/upload/v1668146798/c3-website/event%20pictures/compose%20camp/IMG-20220917-WA0019-01_ukvaox.jpg"
+            // "https://res.cloudinary.com/dli15zk4p/image/upload/v1668146798/c3-website/event%20pictures/compose%20camp/IMG-20220917-WA0019-01_ukvaox.jpg"
         ],
         eventDesc: "A month-long “Compose Camp” on Kotlin  - the most trending Android Development Language"
     },
