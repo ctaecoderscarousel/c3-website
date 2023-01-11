@@ -9,6 +9,7 @@ import NextNProgress from "nextjs-progressbar";
 import { Navbar } from "../src/components/Common/Navbar";
 import { Footer } from "../src/components/Common/Footer";
 
+
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const routeName = router.pathname
@@ -34,6 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Navbar />
       <Component {...pageProps} />
       <Footer />
+   
     </div>
   );
 }
