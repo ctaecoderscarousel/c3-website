@@ -18,9 +18,11 @@ export default function App({ Component, pageProps }: AppProps) {
     .toString();
 
   const title = routeName.charAt(0).toUpperCase() + routeName.slice(1);
-
+  const { pathname} = router;
+  console.log(pathname);
   return (
-    <div className="grid grid-cols-6 bg-tertiary">
+<div>
+   {pathname.includes("/dashboard")?null: <div className="grid grid-cols-6 bg-tertiary"/>}
       <NextNProgress />
       <Head>
         <title>{title ? title : "CTAE Coders Carousel"}</title>
@@ -30,9 +32,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <Toaster toastOptions={{ duration: 3000 }} />
 
-      <Navbar />
+      {/* <Navbar /> */}
+      {pathname.includes("/dashboard") ? null : <Navbar />}
       <Component {...pageProps} />
-      <Footer />
+      {pathname.includes("/dashboard") ? null : <Footer />}
     </div>
   );
 }

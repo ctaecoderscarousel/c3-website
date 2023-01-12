@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { FC, useEffect, useState } from "react";
-
 import { Logo } from "./Logo";
 import { MobileNavbar } from "./MobileNavbar";
 
@@ -13,22 +13,25 @@ export const Navbar: FC<{}> = ({
     const mobileNavbarHandler = (action: any) => {
         setMobNavbar(action)
     }
-
     const changeBackground = () => {
-        if (window.scrollY >= 80) {
+        if (window.scrollY >= 80 ) {
             setNavbar(true);
         }
         else {
             setNavbar(false);
         }
     }
+    const router = useRouter();
+
 
     useEffect(() => {
         window.addEventListener('scroll', changeBackground);
     }, [])
 
     return (
-        <div className={`sticky z-50 ${changeNavbar ? 'bg-black/30 shadow-md' : 'shadow-none bg-transparent'} col-span-6 top-0 flex justify-between items-center h-[4rem] p-2 px-5 w-full border-0`}>
+
+        <div className={` sticky z-50 ${changeNavbar ? 'bg-black/30 shadow-md' : 'shadow-none bg-transparent'} col-span-6 top-0 flex justify-between items-center h-[4rem] p-2 px-5 w-full border-0 `}>
+           
             <Link href={'/'}>
                 <Logo />
             </Link>
