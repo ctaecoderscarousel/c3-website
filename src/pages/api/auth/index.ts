@@ -12,7 +12,7 @@ export default async function authHandler(
             const accessToken = headers.authorization.split(' ')[1]
 
             try {
-                const user = await adminAuth.verifyIdToken(accessToken!)
+                const user = await adminAuth.verifyIdToken(accessToken!)               
                 const { email, name, user_id } = user
 
                 const result = await prisma.user.findUnique({
