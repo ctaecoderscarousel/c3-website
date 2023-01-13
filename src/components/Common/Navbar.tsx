@@ -1,15 +1,14 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { FC, useEffect, useState, useRef } from 'react'
 import { Logo } from './Logo'
 import { MobileNavbar } from './MobileNavbar'
-import { FcGoogle } from 'react-icons/fc'
-import { FiLogOut } from 'react-icons/fi'
+import { useAuth } from '../../context/auth'
+import Image from 'next/image'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { RxDashboard } from 'react-icons/rx'
-import React, { FC, useEffect, useRef, useState } from 'react'
-import { useAuth } from '../../context/auth'
-import router from 'next/router'
-import Image from 'next/image'
-
+import { FiLogOut } from 'react-icons/fi'
+import { FcGoogle } from 'react-icons/fc'
 export const Navbar: FC<{}> = ({}) => {
     const [changeNavbar, setNavbar] = useState(false)
     const [mobNavbar, setMobNavbar] = useState(false)
@@ -29,7 +28,6 @@ export const Navbar: FC<{}> = ({}) => {
     const mobileNavbarHandler = (action: any) => {
         setMobNavbar(action)
     }
-
     const changeBackground = () => {
         if (window.scrollY >= 80) {
             setNavbar(true)
@@ -37,6 +35,7 @@ export const Navbar: FC<{}> = ({}) => {
             setNavbar(false)
         }
     }
+    const router = useRouter()
 
     useEffect(() => {
         window.addEventListener('scroll', changeBackground)
@@ -44,11 +43,11 @@ export const Navbar: FC<{}> = ({}) => {
 
     return (
         <div
-            className={`sticky z-50 ${
+            className={` sticky z-50 ${
                 changeNavbar
                     ? 'bg-black/30 shadow-md'
                     : 'shadow-none bg-transparent'
-            } col-span-6 top-0 flex justify-between items-center h-[4rem] p-2 px-5 w-full border-0`}
+            } col-span-6 top-0 flex justify-between items-center h-[4rem] p-2 px-5 w-full border-0 `}
         >
             <Link href={'/'}>
                 <Logo />

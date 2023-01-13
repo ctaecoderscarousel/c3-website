@@ -38,9 +38,10 @@ export default function App({ Component, pageProps }: AppProps) {
 
                 <Toaster toastOptions={{ duration: 3000 }} />
 
-                <Navbar />
+                {/* <Navbar /> */}
+                {router.pathname.includes('/dashboard') ? null : <Navbar />}
                 <Component {...pageProps} />
-                <Footer />
+                {router.pathname.includes('/dashboard') ? null : <Footer />}
             </AuthProvider>
         </div>
     )
