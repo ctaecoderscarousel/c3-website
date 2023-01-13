@@ -44,11 +44,9 @@ export const Navbar: FC<{}> = ({}) => {
 
     return (
         <div
-            className={` sticky z-50 ${
-                changeNavbar
-                    ? 'bg-black/30 shadow-md'
-                    : 'shadow-none bg-transparent'
-            } col-span-6 top-0 flex justify-between items-center h-[4rem] p-2 px-5 w-full border-0 `}
+            className={` sticky text-white z-50 ${
+                changeNavbar ? ' shadow-md' : 'shadow-none '
+            } col-span-6 top-0 flex bg-primary-700 justify-between items-center h-[4rem] p-2 px-5 w-full border-0 `}
         >
             <Link href={'/'}>
                 <Logo />
@@ -57,7 +55,7 @@ export const Navbar: FC<{}> = ({}) => {
                 showMobNavbar={mobNavbar}
                 mobNavbarHandler={mobileNavbarHandler}
             />
-            <div className="md:flex hidden font-semibold text-white items-center space-x-8">
+            <div className="md:flex hidden font-semibold items-center space-x-8">
                 <Link href={'/team'}>
                     <span className="cursor-pointer">Team</span>
                 </Link>

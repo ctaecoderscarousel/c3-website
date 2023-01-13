@@ -22,7 +22,7 @@ export default function App({ Component, pageProps }: AppProps) {
     const title = routeName.charAt(0).toUpperCase() + routeName.slice(1)
 
     return (
-        <div className="grid grid-cols-6 bg-tertiary">
+        <div className="grid grid-cols-6">
             <AuthProvider>
                 <NextNProgress />
                 <Head>
@@ -46,11 +46,7 @@ export default function App({ Component, pageProps }: AppProps) {
                     <Navbar />
                 )}
                 <Component {...pageProps} />
-                {router.pathname.includes('/dashboard') ? (
-                    null
-                ) : (
-                    <Footer />
-                )}
+                {router.pathname.includes('/dashboard') ? null : <Footer />}
             </AuthProvider>
         </div>
     )

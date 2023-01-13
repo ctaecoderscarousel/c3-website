@@ -6,11 +6,10 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 export const Events: FC<{}> = ({}) => {
     return (
-        <div className="flex p-3 md:p-10 flex-col items-center">
-            <h2 className="text-3xl md:text-5xl font-bold text-primary-light pb-4">
+        <div className="flex py-10 md:py-16 md:px-16 px-10 flex-col space-y-10 items-center bg-[#EAEAEA]">
+            <h2 className="text-3xl md:text-5xl font-bold text-primary-500 pb-4">
                 Events
             </h2>
-
             <div className="flex flex-col w-full space-y-3">
                 {eventsData.map((event) => {
                     return (
@@ -20,9 +19,9 @@ export const Events: FC<{}> = ({}) => {
                                 event.align === 'left'
                                     ? 'md:flex-row '
                                     : 'md:flex-row-reverse '
-                            } items-center  flex-col  p-5  rounded-xl bg-primary/30 shadow-md`}
+                            } items-center md:space-x-4 flex-col  p-5  rounded-xl bg-primary/30`}
                         >
-                            <div className="w-1/2 h-52 ">
+                            <div className="w-1/2 h-52">
                                 <Carousel
                                     infiniteLoop
                                     autoPlay
@@ -49,7 +48,9 @@ export const Events: FC<{}> = ({}) => {
                                     })}
                                 </Carousel>
                             </div>
-                            <p className="text-white">{event.eventDesc}</p>
+                            <p className="font-semibold text-lg text-primary-600">
+                                {event.eventDesc}
+                            </p>
                         </div>
                     )
                 })}
