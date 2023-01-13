@@ -11,7 +11,7 @@ import { getAuth } from 'firebase-admin/auth'
 const { privateKey } = JSON.parse(process.env.PRIVATE_KEY!)
 
 const credentials: ServiceAccount = {
-    projectId: process.env.PROJECT_ID,
+    projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
     privateKey: privateKey,
     clientEmail: process.env.CLIENT_EMAIL,
 }
