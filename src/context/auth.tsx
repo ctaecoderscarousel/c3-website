@@ -5,25 +5,29 @@ import { firebaseAuth } from '../utils/firebaseInit'
 import cookies from 'js-cookie'
 import { api } from '../utils/api'
 import { toast } from 'react-hot-toast'
+import { useRouter } from 'next/router'
 
 const AuthContext = createContext({
     isAuthenticated: false,
     user: null,
-    displayName: '',
     photoURL: '',
-    signIn: () => {},
+    displayName: '',
+    login: () => {},
     logout: () => {},
     loading: true,
 })
 
-export const AuthProvider: FC<{ children: any }> = ({ children }) => {
-    const provider = new GoogleAuthProvider()
+export const AuthProvider = ({ children }: any) => {
+    //? router
+    const router = useRouter()
 
-    const [loading, setLoading] = useState(true)
+    //? states
     const [user, setUser] = useState(null)
-    const [displayName, setDisplayName] = useState(' ')
-    const [photoURL, setPhotoURL] = useState(' ')
+    const [photoURL, setPhotoURL] = useState('')
+    const [displayName, setDisplayName] = useState('')
+    const [loading, setLoading] = useState(true)
 
+    //? functions
     const logout = () => {
         signOut(firebaseAuth)
             .then(() => {
@@ -38,17 +42,19 @@ export const AuthProvider: FC<{ children: any }> = ({ children }) => {
             })
     }
 
-    const signIn = async () => {
-        const result = await signInWithPopup(firebaseAuth, provider)
+    const login = () => {
+        const provider = new GoogleAuthProvider()
+
+        signInWithPopup(firebaseAuth, provider)
             .then(async (res) => {
                 const { user }: any = res
                 const { accessToken } = user
+
                 if (accessToken) {
                     cookies.set('accessToken', accessToken, { expires: 60 })
 
                     api.defaults.headers.Authorization = `Bearer ${accessToken}`
-                    const { data } = await api.get('/api/auth')
-                    console.log(data)
+                    const { data } = await api.get('/api/auth/')
                     const { result: userData } = data
                     const { picture, name } = userData
 
@@ -66,14 +72,13 @@ export const AuthProvider: FC<{ children: any }> = ({ children }) => {
     }
 
     async function loadUserFromCookie() {
-        const accessToken = cookies.get(`accessToken`)
+        const accessToken = cookies.get('accessToken')
         if (accessToken) {
             api.defaults.headers.Authorization = `Bearer ${accessToken}`
             try {
-                const { data } = await api.get('/api/auth')
+                const { data } = await api.get('/api/auth/')
                 const { result: user } = data
                 const { picture, name } = user
-                console.log(user)
                 if (user) {
                     setUser(user)
                     setPhotoURL(picture)
@@ -85,16 +90,14 @@ export const AuthProvider: FC<{ children: any }> = ({ children }) => {
                     setUser(null)
                     delete api.defaults.headers.Authorization
                 }
-                console.log(err)
             }
         }
         setLoading(false)
     }
 
+    //? effects
     useEffect(() => {
-        if (loading) {
-            loadUserFromCookie()
-        }
+        if (loading) loadUserFromCookie()
     }),
         [loading]
 
@@ -103,9 +106,9 @@ export const AuthProvider: FC<{ children: any }> = ({ children }) => {
             value={{
                 isAuthenticated: !!user,
                 user,
-                displayName,
                 photoURL,
-                signIn,
+                displayName,
+                login,
                 logout,
                 loading,
             }}
@@ -114,4 +117,13 @@ export const AuthProvider: FC<{ children: any }> = ({ children }) => {
         </AuthContext.Provider>
     )
 }
+
 export const useAuth = () => useContext(AuthContext)
+
+export const ProtectRoute = ({ children }: any) => {
+    // const { isAuthenticated, loading }: any = useAuth()
+
+    // if (loading || (!isAuthenticated && window.location.pathname !== "/login"))
+    //     return <h1>Loading...</h1>
+    return children
+}

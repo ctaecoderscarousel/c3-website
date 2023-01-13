@@ -7,8 +7,8 @@ import { BsThreeDotsVertical } from 'react-icons/bs'
 import { RxDashboard } from 'react-icons/rx'
 import React, { FC, useEffect, useRef, useState } from 'react'
 import { useAuth } from '../../context/auth'
-// import Image from 'next/image'
 import router from 'next/router'
+import Image from 'next/image'
 
 export const Navbar: FC<{}> = ({}) => {
     const [changeNavbar, setNavbar] = useState(false)
@@ -17,14 +17,14 @@ export const Navbar: FC<{}> = ({}) => {
     const activeRef = useRef<any | null>(null)
     const [activeOffsetWidth, setActiveOffsetWidth] = useState<string>('')
     const [activeOffsetLeft, setActiveOffsetLeft] = useState<string>('')
-    const { user, photoURL, displayName, signIn, logout, loading } = useAuth()
+    const { user, photoURL, displayName, login, logout, loading } = useAuth()
 
     useEffect(() => {
         if (activeRef.current) {
             setActiveOffsetWidth(activeRef.current.offsetWidth.toString())
             setActiveOffsetLeft(activeRef.current.offsetLeft.toString())
         }
-    }, [router, activeRef, activeRef.current?.offsetWidth])
+    }, [activeRef, activeRef.current?.offsetWidth])
 
     const mobileNavbarHandler = (action: any) => {
         setMobNavbar(action)
@@ -68,47 +68,49 @@ export const Navbar: FC<{}> = ({}) => {
                 {user ? (
                     <div
                         onClick={() => setShowOptions(!showOptions)}
-                        className="rounded-full bg-blue-300 cursor-pointer flex space-x-2 items-center pl-2 pr-3 py-2"
+                        className="rounded-full bg-white cursor-pointer flex space-x-2 items-center pl-2 pr-3 py-1"
                     >
-                        {/* <Image
+                        <Image
                             className="rounded-full"
                             src={photoURL}
-                            alt="user Image"
                             width={40}
                             height={40}
-                        /> */}
-
-                        <span className="font-semibold text-black  hover:bg-black/10">
+                            alt="user"
+                        />
+                        <span className="font-semibold text-tertiary">
                             {displayName}
                         </span>
-                        <BsThreeDotsVertical className="h-5 w-5 text-primary" />
+                        <BsThreeDotsVertical className="h-6 w-6 text-primary" />
                         {showOptions && (
                             <div
                                 onClick={logout}
-                                className="absolute top-[5.5rem] right-2 z-50  text-black bg-blue-300 py-2 rounded-xl flex flex-col items-center justify-center"
+                                className="absolute text-tertiary top-[4rem] z-50 bg-white py-2 rounded-xl flex flex-col items-center justify-center"
                             >
-                                <div className="px-5 py-3 cursor-pointer group hover:bg-black/10 flex space-x-2 items-center justify-between">
-                                    <p className="font-semibold ">Logout</p>
-                                    <FiLogOut className="h-5 w-5 text-gray-800" />
+                                <div
+                                    onClick={() => router.push('/dashboard')}
+                                    className="px-5 py-3 cursor-pointer group hover:bg-black/10 w-full flex space-x-2 items-center justify-between"
+                                >
+                                    <p className="font-semibold ">Dashboard</p>
+                                    <RxDashboard className="h-6 w-6 text-gray-800" />
                                 </div>
-                                <div className="px-5 py-3 cursor-pointer group hover:bg-black/10 flex space-x-2 items-center justify-between">
-                                    <p className=" ">DashBoard</p>
-                                    <RxDashboard className="h-5 w-5 text-gray-800" />
+                                <div className="px-5 py-3 cursor-pointer group hover:bg-black/10 w-full flex space-x-2 items-center justify-between">
+                                    <p className="font-semibold ">Logout</p>
+                                    <FiLogOut className="h-6 w-6 text-gray-800" />
                                 </div>
                             </div>
                         )}
                     </div>
                 ) : (
-                    <div className="  rounded-3xl text-white  hover:bg-blue-300">
-                        <button
-                            disabled={loading}
-                            onClick={signIn}
-                            className="disabled:cursor-wait rounded-full  cursor-pointer flex space-x-2  py-2 px-3"
-                        >
-                            <FcGoogle className="h-5 w-5 text-primary" />
-                            <span>Login</span>
-                        </button>
-                    </div>
+                    <button
+                        disabled={loading}
+                        onClick={login}
+                        className="disabled:cursor-wait rounded-full bg-white cursor-pointer flex space-x-2 items-center py-2 px-3"
+                    >
+                        <FcGoogle className="h-7 w-7 text-primary" />
+                        <span className="font-semibold text-tertiary">
+                            Login
+                        </span>
+                    </button>
                 )}
             </div>
 
