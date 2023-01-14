@@ -49,7 +49,7 @@ import { useRouter } from "next/router"
       <br/>
      <br/>
      <Link href={'dashboard/profile'}>
-      <button className="hover:bg-sky-300  pt-2 p-0 w-full "ss>
+      <button className="hover:bg-sky-300  pt-2 p-0 w-full ">
       <div className="flex">
       <FaUserCircle className="h-5 md:h-9 fill-white w-6 justify-center"/>
       <h1 className="text-xs  md:text-2xl pl-2 text-white">Profile</h1>
