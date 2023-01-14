@@ -10,8 +10,8 @@ const Profile: NextPage<{}> = ({}) => {
     const [year, setYear] = useState('')
     const [branch, setBranch] = useState('')
     return (
-     
-            <div className="col-span-6 p-8 min-h-full flex flex-col justify-center space-y-3 item-center">
+        
+            <div className="p-8 min-h-full flex flex-col justify-center space-y-3 item-center">
                 <h1 className="text-3xl bg-clip-text bg-gradient-to-r  from-primary-light  via-primary to-secondary  text-transparent text-center font-bold   ">
                     Profile
                 </h1>
@@ -53,7 +53,7 @@ const Profile: NextPage<{}> = ({}) => {
                         />
                     </form>
                     <span>Sub-Club Name</span>
-                    <DashboardNav/>
+                    {/* <DashboardNav/> */}
                 </div>
             </div>
        

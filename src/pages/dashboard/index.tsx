@@ -1,7 +1,7 @@
 import { NextPage } from 'next'
 
 const Dashboard: NextPage<{}> = ({}) => {
-    return <div>Dashboard</div>
+    return <div></div>
 }
 
 export default Dashboard

@@ -4,7 +4,7 @@ import { AiOutlineLinkedin } from 'react-icons/ai'
 
 export const Footer: FC<{}> = ({}) => {
     return (
-        <footer className="col-span-6 p-4 primary sm:p-6 dark:bg-gray-900">
+        <footer className="col-span-6 p-4 primary sm:p-6 bg-primary-700">
             <div className="md:flex md:justify-between">
                 <div className="mb-6 md:mb-0">
                     <Logo />

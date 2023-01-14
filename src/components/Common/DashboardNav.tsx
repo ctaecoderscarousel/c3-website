@@ -12,16 +12,16 @@ import { useRouter } from "next/router"
     const router = useRouter();
    
     return (
-      <div className='p-0 w-32 h-screen bg-white z-30 '>
+      <div className=' w-32  md:w-52 h-screen bg-white z-30 '>
 
         {/* <h1>{router.pathname}</h1> */}
        
-    <div className="p-3 w-full justify-center w-32 h-screen  space-y-3">
-     <Link href="/home">
-      <button className="hover:bg-blue-400" w-full>
-    <div className="flex">
-    <AiFillHome className="h-6  w-6  justify-center "/>
-     <h1 className="text-xs justify-center">Home</h1>
+    <div className="  w-32 pt-3  md:w-52 bg-primary-700 justify-center h-screen  space-y-3">
+     <Link href="/home" >
+      <button className="hover:bg-sky-300  pt-2 p-0 w-full " >
+    <div className="flex pt-3">
+    <AiFillHome className="h-5 md:h-9  fill-white w-6  justify-center "/>
+     <h1 className="text-xs  md:text-2xl pl-2 text-white justify-center">Home</h1>
      
      </div>
      </button>
@@ -29,30 +29,30 @@ import { useRouter } from "next/router"
      <br/>
      <br/>
    <Link href={'/members'}>
-     <button>
+     <button className="hover:bg-sky-300  pt-2 p-0 w-full ">
      <div className="flex">
-       <IoIosPeople className="h-6 fill-white w-6 justify-center "/>
-      <h1 className="text-xs text-white justify-center">Members</h1>
+       <IoIosPeople className="h-5 md:h-9  fill-white w-6 justify-center "/>
+      <h1 className="text-xs md:text-2xl pl-2 text-white justify-center">Members</h1>
       </div>
       </button>
       </Link>
       <br/>
      <br/>
      <Link href={'/assignments'}>
-      <button>
+      <button className="hover:bg-sky-300  pt-2 p-0 w-full ">
       <div className="flex">
-      <GiNotebook className="h-6 fill-white w-6 justify-center "/>
-      <h1 className="text-xs text-white justify-center">Assignments</h1>
+      <GiNotebook className="h-5 md:h-9 fill-white w-6 justify-center "/>
+      <h1 className="text-xs  md:text-2xl pl-2 text-white justify-center">Assignments</h1>
       </div>
       </button>
       </Link>
       <br/>
      <br/>
      <Link href={'dashboard/profile'}>
-      <button>
+      <button className="hover:bg-sky-300  pt-2 p-0 w-full "ss>
       <div className="flex">
-      <FaUserCircle className="h-6 fill-white w-6 justify-center"/>
-      <h1 className="text-xs text-white">Profile</h1>
+      <FaUserCircle className="h-5 md:h-9 fill-white w-6 justify-center"/>
+      <h1 className="text-xs  md:text-2xl pl-2 text-white">Profile</h1>
       </div>
       </button>
       </Link>
