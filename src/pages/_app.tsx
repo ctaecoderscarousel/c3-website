@@ -47,10 +47,11 @@ export default function App({ Component, pageProps }: AppProps) {
                 )}
                 <Component {...pageProps} />
                 {router.pathname.includes('/dashboard') ? (
-                    <DashboardNav />
+                    null
                 ) : (
                     <Footer />
                 )}
+               
             </AuthProvider>
         </div>
     )
